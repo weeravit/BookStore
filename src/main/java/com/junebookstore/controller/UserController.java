@@ -1,6 +1,7 @@
 package com.junebookstore.controller;
 
 import com.junebookstore.model.Login;
+import com.junebookstore.model.OrderBooks;
 import com.junebookstore.model.Register;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,7 @@ public class UserController {
     }
 
     @PostMapping("/users/orders")
-    public ResponseEntity<?> orderBooks() {
+    public ResponseEntity<?> orderBooks(@RequestBody OrderBooks request) {
         return ResponseEntity.ok("");
     }
 }
