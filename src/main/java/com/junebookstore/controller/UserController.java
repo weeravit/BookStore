@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class UserController {
     @PostMapping("/users")
-    public ResponseEntity<?> createUserAccount(@RequestBody Register register) {
-        return ResponseEntity.ok("");
+    public ResponseEntity<?> createUserAccount(@RequestBody Register request) {
+        return ResponseEntity.ok(request);
     }
 
     @GetMapping("/users")
@@ -24,8 +24,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody Login login) {
-        return ResponseEntity.ok(login);
+    public ResponseEntity<?> login(@RequestBody Login request) {
+        return ResponseEntity.ok(request);
     }
 
     @PostMapping("/users/orders")
