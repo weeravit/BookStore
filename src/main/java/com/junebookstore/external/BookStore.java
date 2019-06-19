@@ -2,7 +2,6 @@ package com.junebookstore.external;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.junebookstore.entity.BookEntity;
 import com.junebookstore.model.Book;
 import org.springframework.web.client.RestTemplate;
 
@@ -25,7 +24,7 @@ public class BookStore {
     private BookStore() {
     }
 
-    public List<BookEntity> getBooks() {
+    public List<Book> getBooks() {
         String url = String.format("%s/books", BASE_URL);
         String json = restTemplate.getForObject(url, String.class);
 
@@ -38,7 +37,7 @@ public class BookStore {
         }
     }
 
-    public List<BookEntity> getBooksRecommendation() {
+    public List<Book> getBooksRecommendation() {
         String url = String.format("%s/books/recommendation", BASE_URL);
         String json = restTemplate.getForObject(url, String.class);
 
