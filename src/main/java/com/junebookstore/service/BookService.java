@@ -16,6 +16,14 @@ public class BookService {
     BookRepository repository;
 
     public List<BookEntity> getBooks() {
+        List<BookEntity> entities = repository.findAll(
+                Sort.by(Sort.Direction.DESC, BookEntity.IS_RECOMMENDED_COL)
+        );
+
+        if (!entities.isEmpty()) {
+            return entities;
+        }
+
         List<BookEntity> booksList = BookTransform.toEntity(
                 BookStore.getInstance().getBooks(),
                 false
@@ -30,6 +38,6 @@ public class BookService {
         repository.saveAll(booksList);
         repository.saveAll(booksRecommendationList);
 
-        return repository.findAll(Sort.by(Sort.Direction.DESC, "isRecommended"));
+        return repository.findAll(Sort.by(Sort.Direction.DESC, BookEntity.IS_RECOMMENDED_COL));
     }
 }
