@@ -26,8 +26,8 @@ public class BookStubRepository implements BookBaseRepository {
     @Override
     public List<BookEntity> getBooksRecommendation() {
         return Arrays.asList(
-                new BookEntity(2, 179, "When Never Comes", "Barbara Davis", false),
-                new BookEntity(5, 149, "An American Princess: The Many Lives of Allene Tew", "Annejet van der Zijl, Michele Hutchison", false)
+                new BookEntity(2, 179, "When Never Comes", "Barbara Davis", true),
+                new BookEntity(5, 149, "An American Princess: The Many Lives of Allene Tew", "Annejet van der Zijl, Michele Hutchison", true)
         );
     }
 }
