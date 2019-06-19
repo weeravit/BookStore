@@ -16,10 +16,7 @@ public class BookService {
 
     public List<BookEntity> getBooks() {
         List<BookEntity> books = repository.getBooks();
-        List<BookEntity> recommendation = repository.getBooksRecommendation()
-                .stream()
-                .peek(recommend -> recommend.setRecommended(true))
-                .collect(Collectors.toList());
+        List<BookEntity> recommendation = repository.getBooksRecommendation();
 
         List<BookEntity> booksWithoutRecommend = books.stream()
                 .filter(book -> recommendation.stream().noneMatch(recommend -> recommend.equals(book)))
