@@ -1,7 +1,7 @@
 package com.junebookstore.service;
 
 import com.junebookstore.entity.BookEntity;
-import com.junebookstore.external.BookStore;
+import com.junebookstore.gateway.BookStoreGateway;
 import com.junebookstore.repository.BookRepository;
 import com.junebookstore.transform.BookTransform;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +25,12 @@ public class BookService {
         }
 
         List<BookEntity> booksList = BookTransform.toEntity(
-                BookStore.getInstance().getBooks(),
+                BookStoreGateway.getInstance().getBooks(),
                 false
         );
 
         List<BookEntity> booksRecommendationList = BookTransform.toEntity(
-                BookStore.getInstance().getBooksRecommendation(),
+                BookStoreGateway.getInstance().getBooksRecommendation(),
                 true
         );
 

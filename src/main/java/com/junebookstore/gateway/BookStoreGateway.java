@@ -1,4 +1,4 @@
-package com.junebookstore.external;
+package com.junebookstore.gateway;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,19 +9,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookStore {
+public class BookStoreGateway {
     private final String BASE_URL = "https://scb-test-book-publisher.herokuapp.com";
 
     private ObjectMapper objectMapper = new ObjectMapper();
     private RestTemplate restTemplate = new RestTemplate();
 
-    private static BookStore ourInstance = new BookStore();
+    private static BookStoreGateway ourInstance = new BookStoreGateway();
 
-    public static BookStore getInstance() {
+    public static BookStoreGateway getInstance() {
         return ourInstance;
     }
 
-    private BookStore() {
+    private BookStoreGateway() {
     }
 
     public List<Book> getBooks() {
