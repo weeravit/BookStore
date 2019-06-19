@@ -1,5 +1,7 @@
 package com.junebookstore.entity;
 
+import java.util.Objects;
+
 public class BookEntity {
     private int id;
     private double price;
@@ -53,5 +55,18 @@ public class BookEntity {
 
     public void setRecommended(boolean recommended) {
         isRecommended = recommended;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BookEntity that = (BookEntity) o;
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
