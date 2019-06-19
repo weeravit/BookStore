@@ -2,6 +2,7 @@ package com.junebookstore.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.util.Objects;
 
 @Entity
@@ -12,6 +13,9 @@ public class BookEntity {
     private String bookName;
     private String authorName;
     private boolean isRecommended;
+
+    @Transient
+    public static final String IS_RECOMMENDED_COL = "isRecommended";
 
     public BookEntity() {
     }
