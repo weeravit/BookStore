@@ -1,13 +1,14 @@
 package com.junebookstore.controller;
 
 import com.junebookstore.model.Login;
+import com.junebookstore.model.Register;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
     @PostMapping("/users")
-    public ResponseEntity<?> createUserAccount() {
+    public ResponseEntity<?> createUserAccount(@RequestBody Register register) {
         return ResponseEntity.ok("");
     }
 
