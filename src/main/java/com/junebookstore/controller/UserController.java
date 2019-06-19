@@ -1,10 +1,8 @@
 package com.junebookstore.controller;
 
+import com.junebookstore.model.Login;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -24,8 +22,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login() {
-        return ResponseEntity.ok("");
+    public ResponseEntity<?> login(@RequestBody Login login) {
+        return ResponseEntity.ok(login);
     }
 
     @PostMapping("/users/orders")
