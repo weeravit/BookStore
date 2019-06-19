@@ -14,6 +14,8 @@ import java.util.List;
 public class BookService {
     @Autowired
     BookRepository repository;
+    @Autowired
+    BookStoreGateway bookStoreGateway;
 
     public List<BookEntity> getBooks() {
         List<BookEntity> entities = repository.findAll(
@@ -25,12 +27,12 @@ public class BookService {
         }
 
         List<BookEntity> booksList = BookTransform.toEntity(
-                BookStoreGateway.getInstance().getBooks(),
+                bookStoreGateway.getBooks(),
                 false
         );
 
         List<BookEntity> booksRecommendationList = BookTransform.toEntity(
-                BookStoreGateway.getInstance().getBooksRecommendation(),
+                bookStoreGateway.getBooksRecommendation(),
                 true
         );
 
