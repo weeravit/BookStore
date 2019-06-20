@@ -4,6 +4,8 @@ public class Register {
     private String username;
     private String password;
     private String dateOfBirth;
+    private String name;
+    private String surname;
 
     public Register() {}
 
@@ -29,5 +31,21 @@ public class Register {
 
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 }
