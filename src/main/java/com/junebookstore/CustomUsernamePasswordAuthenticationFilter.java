@@ -1,7 +1,8 @@
 package com.junebookstore;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.junebookstore.helper.JsonWrapper;
 import com.junebookstore.model.Login;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -13,11 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class CustomUsernamePasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+    private JsonWrapper jsonWrapper = new JsonWrapper();
+
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            Login user = objectMapper.readValue(request.getReader(), Login.class);
+            Login user = jsonWrapper.readValue(request.getReader(), Login.class);
 
             return new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
         } catch (IOException e) {
