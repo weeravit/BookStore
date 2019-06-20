@@ -30,12 +30,6 @@ public class UserController {
         return ResponseEntity.ok("");
     }
 
-//    @PostMapping("/login")
-//    public ResponseEntity<?> login(@RequestBody Login request) {
-//        int userId = service.login(request);
-//        return ResponseEntity.ok(userId);
-//    }
-
     @PostMapping("/users/orders")
     public ResponseEntity<?> orderBooks(@RequestBody OrderBooks request) {
         return ResponseEntity.ok("");
