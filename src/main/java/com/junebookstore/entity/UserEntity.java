@@ -20,12 +20,17 @@ public class UserEntity {
     @Column(nullable = false)
     private String dateOfBirth;
 
+    private String name;
+    private String surname;
+
     public UserEntity() {}
 
-    public UserEntity(String username, String password, String dateOfBirth) {
+    public UserEntity(String username, String password, String dateOfBirth, String name, String surname) {
         this.username = username;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
+        this.name = name;
+        this.surname = surname;
     }
 
     public int getId() {
@@ -58,5 +63,21 @@ public class UserEntity {
 
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 }
