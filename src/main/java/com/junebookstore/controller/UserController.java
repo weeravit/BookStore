@@ -1,7 +1,9 @@
 package com.junebookstore.controller;
 
 import com.junebookstore.model.OrderBooks;
+import com.junebookstore.model.OrderPrice;
 import com.junebookstore.model.Register;
+import com.junebookstore.service.OrderService;
 import com.junebookstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,11 +14,13 @@ import java.security.Principal;
 @RestController
 public class UserController {
     @Autowired
-    UserService service;
+    UserService userService;
+    @Autowired
+    OrderService orderService;
 
     @PostMapping("/users")
     public ResponseEntity<?> createUserAccount(@RequestBody Register request) {
-        int userId = service.register(request);
+        int userId = userService.register(request);
         return ResponseEntity.ok(userId);
     }
 
@@ -31,7 +35,8 @@ public class UserController {
     }
 
     @PostMapping("/users/orders")
-    public ResponseEntity<?> orderBooks(@RequestBody OrderBooks request) {
-        return ResponseEntity.ok("");
+    public ResponseEntity<?> orderBooks(Principal principal, @RequestBody OrderBooks request) {
+        OrderPrice orderPrice = orderService.orderBooks(principal.getName(), request);
+        return ResponseEntity.ok(orderPrice);
     }
 }
