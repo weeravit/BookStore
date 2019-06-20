@@ -3,7 +3,9 @@ package com.junebookstore.service;
 import com.junebookstore.entity.UserEntity;
 import com.junebookstore.helper.SecureHelper;
 import com.junebookstore.model.Register;
+import com.junebookstore.model.UserInformation;
 import com.junebookstore.model.UserPrincipal;
+import com.junebookstore.repository.OrderRepository;
 import com.junebookstore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,10 +13,15 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class UserService implements UserDetailsService {
     @Autowired
-    UserRepository repository;
+    UserRepository userRepository;
+    @Autowired
+    OrderRepository orderRepository;
     @Autowired
     SecureHelper secureHelper;
 
@@ -27,14 +34,29 @@ public class UserService implements UserDetailsService {
                 data.getSurname()
         );
 
-        UserEntity saved = repository.save(entity);
+        UserEntity saved = userRepository.save(entity);
 
         return saved.getId();
     }
 
+    public UserInformation getInformation(String username) {
+        UserEntity user = userRepository.findByUsername(username);
+        List<Integer> books = orderRepository.findByUser(user)
+                .stream()
+                .map(order -> order.getBook().getId())
+                .collect(Collectors.toList());
+
+        return new UserInformation(
+                user.getName(),
+                user.getSurname(),
+                user.getDateOfBirth(),
+                books
+        );
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity entity = repository.findByUsername(username);
+        UserEntity entity = userRepository.findByUsername(username);
 
         if (entity == null) {
             throw new UsernameNotFoundException(username);
