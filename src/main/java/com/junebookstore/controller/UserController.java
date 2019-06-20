@@ -20,8 +20,8 @@ public class UserController {
 
     @PostMapping("/users")
     public ResponseEntity<?> createUserAccount(@RequestBody Register request) {
-        int userId = userService.register(request);
-        return ResponseEntity.ok(userId);
+        userService.register(request);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/users")
