@@ -1,21 +1,28 @@
 package com.junebookstore.controller;
 
-import com.junebookstore.model.Login;
 import com.junebookstore.model.OrderBooks;
 import com.junebookstore.model.Register;
+import com.junebookstore.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @RestController
 public class UserController {
+    @Autowired
+    UserService service;
+
     @PostMapping("/users")
     public ResponseEntity<?> createUserAccount(@RequestBody Register request) {
-        return ResponseEntity.ok(request);
+        int userId = service.register(request);
+        return ResponseEntity.ok(userId);
     }
 
     @GetMapping("/users")
-    public ResponseEntity<?> getUserInformation() {
-        return ResponseEntity.ok("");
+    public ResponseEntity<?> getUserInformation(Principal principal) {
+        return ResponseEntity.ok(principal.getName());
     }
 
     @DeleteMapping("/users")
@@ -23,10 +30,11 @@ public class UserController {
         return ResponseEntity.ok("");
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody Login request) {
-        return ResponseEntity.ok(request);
-    }
+//    @PostMapping("/login")
+//    public ResponseEntity<?> login(@RequestBody Login request) {
+//        int userId = service.login(request);
+//        return ResponseEntity.ok(userId);
+//    }
 
     @PostMapping("/users/orders")
     public ResponseEntity<?> orderBooks(@RequestBody OrderBooks request) {
