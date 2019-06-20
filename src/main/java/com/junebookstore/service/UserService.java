@@ -21,7 +21,9 @@ public class UserService implements UserDetailsService {
         UserEntity entity = new UserEntity(
                 data.getUsername(),
                 passwordEncoder().encode(data.getPassword()),
-                data.getDateOfBirth()
+                data.getDateOfBirth(),
+                data.getName(),
+                data.getSurname()
         );
 
         UserEntity saved = repository.save(entity);
