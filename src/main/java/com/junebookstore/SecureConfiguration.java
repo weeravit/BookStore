@@ -46,7 +46,9 @@ public class SecureConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin();
+                .formLogin()
+                .and()
+                .headers().frameOptions().sameOrigin();
     }
 
     @Bean
