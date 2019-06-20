@@ -3,6 +3,7 @@ package com.junebookstore.controller;
 import com.junebookstore.model.OrderBooks;
 import com.junebookstore.model.OrderPrice;
 import com.junebookstore.model.Register;
+import com.junebookstore.model.UserInformation;
 import com.junebookstore.service.OrderService;
 import com.junebookstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,8 @@ public class UserController {
 
     @GetMapping("/users")
     public ResponseEntity<?> getUserInformation(Principal principal) {
-        return ResponseEntity.ok(principal.getName());
+        UserInformation userInformation = userService.getInformation(principal.getName());
+        return ResponseEntity.ok(userInformation);
     }
 
     @DeleteMapping("/users")
