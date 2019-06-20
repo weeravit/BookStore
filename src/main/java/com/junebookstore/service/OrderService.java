@@ -11,6 +11,7 @@ import com.junebookstore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -42,5 +43,12 @@ public class OrderService {
                 }).sum();
 
         return new OrderPrice(sum);
+    }
+
+    public void deleteOrderHistory(String username) {
+        UserEntity userEntity = userRepository.findByUsername(username);
+        List<OrderEntity> orderEntities = orderRepository.findByUser(userEntity);
+
+        orderRepository.deleteAll(orderEntities);
     }
 }

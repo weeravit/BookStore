@@ -30,8 +30,9 @@ public class UserController {
     }
 
     @DeleteMapping("/users")
-    public ResponseEntity<?> deleteUserActivity() {
-        return ResponseEntity.ok("");
+    public ResponseEntity<?> deleteUserActivity(Principal principal) {
+        orderService.deleteOrderHistory(principal.getName());
+        return ResponseEntity.ok().build();
     }
 
     @PostMapping("/users/orders")

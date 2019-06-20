@@ -23,7 +23,8 @@ public class UserEntity {
     private String name;
     private String surname;
 
-    public UserEntity() {}
+    public UserEntity() {
+    }
 
     public UserEntity(String username, String password, String dateOfBirth, String name, String surname) {
         this.username = username;
