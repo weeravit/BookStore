@@ -16,14 +16,11 @@ public class OrderEntity {
     @JoinColumn
     private BookEntity book;
 
-    private boolean status;
-
     public OrderEntity() { }
 
     public OrderEntity(UserEntity user, BookEntity book) {
         this.user = user;
         this.book = book;
-        this.status = true;
     }
 
     public int getId() {
@@ -48,13 +45,5 @@ public class OrderEntity {
 
     public void setBook(BookEntity book) {
         this.book = book;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
     }
 }
