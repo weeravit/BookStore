@@ -22,6 +22,12 @@ public class UserEntity {
 
     public UserEntity() {}
 
+    public UserEntity(String username, String password, String dateOfBirth) {
+        this.username = username;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+    }
+
     public int getId() {
         return id;
     }
