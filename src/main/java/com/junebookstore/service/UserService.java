@@ -18,12 +18,19 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserDetailsService {
-    @Autowired
-    UserRepository userRepository;
-    @Autowired
-    OrderRepository orderRepository;
-    @Autowired
-    SecureHelper secureHelper;
+    private UserRepository userRepository;
+    private OrderRepository orderRepository;
+    private SecureHelper secureHelper;
+
+    public UserService(
+            @Autowired UserRepository userRepository,
+            @Autowired OrderRepository orderRepository,
+            @Autowired SecureHelper secureHelper
+    ) {
+        this.userRepository = userRepository;
+        this.orderRepository = orderRepository;
+        this.secureHelper = secureHelper;
+    }
 
     public int register(Register data) {
         UserEntity entity = new UserEntity(
