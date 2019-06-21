@@ -16,18 +16,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class CustomUsernamePasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+public class AppAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private JsonWrapper jsonWrapper = new JsonWrapper();
 
     @Bean
-    public static CustomUsernamePasswordAuthenticationFilter getFilter(AuthenticationManager authenticationManager) {
-        CustomUsernamePasswordAuthenticationFilter authenFilter = new CustomUsernamePasswordAuthenticationFilter();
+    public static AppAuthenticationFilter getFilter(AuthenticationManager authenticationManager) {
+        AppAuthenticationFilter authenFilter = new AppAuthenticationFilter();
         authenFilter.setAuthenticationManager(authenticationManager);
         authenFilter.setAuthenticationSuccessHandler(authenFilter.successHandler);
         authenFilter.setAuthenticationFailureHandler(authenFilter.failureHandler);
         return authenFilter;
     }
-    
+
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
