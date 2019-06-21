@@ -1,6 +1,6 @@
 package com.junebookstore;
 
-import com.junebookstore.helper.SecureHelper;
+import com.junebookstore.helper.PasswordWrapper;
 import com.junebookstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +23,7 @@ public class SecureConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     UserService userService;
     @Autowired
-    SecureHelper secureHelper;
+    PasswordWrapper passwordWrapper;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) {
@@ -76,7 +76,7 @@ public class SecureConfiguration extends WebSecurityConfigurerAdapter {
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userService);
-        authProvider.setPasswordEncoder(secureHelper.getPasswordEncoder());
+        authProvider.setPasswordEncoder(passwordWrapper.getPasswordEncoder());
         return authProvider;
     }
 }
