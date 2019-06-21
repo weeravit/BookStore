@@ -2,7 +2,6 @@ package com.junebookstore;
 
 import com.junebookstore.helper.JsonWrapper;
 import com.junebookstore.model.Login;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,8 +19,9 @@ public class CustomUsernamePasswordAuthenticationFilter extends UsernamePassword
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
             Login user = jsonWrapper.readValue(request.getReader(), Login.class);
+            UsernamePasswordAuthenticationToken authenRequest = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
 
-            return new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
+            return getAuthenticationManager().authenticate(authenRequest);
         } catch (IOException e) {
             e.printStackTrace();
             throw new InternalAuthenticationServiceException("Failed to parse authentication request body");
