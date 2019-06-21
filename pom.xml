@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.june-bookstore</groupId>
     <artifactId>june-bookstore</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>june-bookstore</name>
     <description>BookStore project for Spring Boot</description>
 
