@@ -1,15 +1,13 @@
 package com.junebookstore.controller;
 
-import com.junebookstore.common.model.OrderBooks;
-import com.junebookstore.common.model.OrderPrice;
-import com.junebookstore.common.model.Register;
-import com.junebookstore.common.model.UserInformation;
+import com.junebookstore.common.model.*;
 import com.junebookstore.business.service.OrderService;
 import com.junebookstore.business.service.UserService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
@@ -28,6 +26,19 @@ public class UserController {
         this.orderService = orderService;
     }
 
+    @ApiOperation(value = "Login")
+    @ApiResponses(value = {
+            @ApiResponse(code = HttpServletResponse.SC_OK, message = "login success"),
+            @ApiResponse(code = HttpServletResponse.SC_UNAUTHORIZED, message = "login failure"),
+    })
+    @PostMapping("/login")
+    public void fakeLoginForMakeDocument(
+            @ApiParam(value = "user information", required = true)
+            @RequestBody Login request
+    ) {
+        throw new IllegalStateException("This method shouldn't be called. It's implemented by Spring Security filters.");
+    }
+
     @ApiOperation(value = "Create user account")
     @ApiResponses(value = {
             @ApiResponse(code = HttpServletResponse.SC_OK, message = "create account success")
@@ -43,11 +54,13 @@ public class UserController {
 
     @ApiOperation(value = "Get user information")
     @ApiResponses(value = {
-            @ApiResponse(code = HttpServletResponse.SC_OK, message = "create account success", response = UserInformation.class),
+            @ApiResponse(code = HttpServletResponse.SC_OK, message = "get information success", response = UserInformation.class),
             @ApiResponse(code = HttpServletResponse.SC_UNAUTHORIZED, message = "Login required")
     })
     @GetMapping("/users")
-    public ResponseEntity<?> getUserInformation(Principal principal) {
+    public ResponseEntity<?> getUserInformation(
+            @ApiIgnore Principal principal
+    ) {
         UserInformation userInformation = userService.getInformation(principal.getName());
         return ResponseEntity.ok(userInformation);
     }
@@ -58,7 +71,9 @@ public class UserController {
             @ApiResponse(code = HttpServletResponse.SC_UNAUTHORIZED, message = "Login required")
     })
     @DeleteMapping("/users")
-    public ResponseEntity<?> deleteUserActivity(Principal principal) {
+    public ResponseEntity<?> deleteUserActivity(
+            @ApiIgnore Principal principal
+    ) {
         orderService.deleteOrderHistory(principal.getName());
         return ResponseEntity.ok().build();
     }
@@ -70,7 +85,7 @@ public class UserController {
     })
     @PostMapping("/users/orders")
     public ResponseEntity<?> orderBooks(
-            Principal principal,
+            @ApiIgnore Principal principal,
             @ApiParam(value = "order information", required = true)
             @RequestBody OrderBooks request
     ) {
