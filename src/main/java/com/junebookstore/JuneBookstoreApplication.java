@@ -9,8 +9,13 @@ import org.springframework.context.event.EventListener;
 
 @SpringBootApplication()
 public class JuneBookstoreApplication {
-    @Autowired
-    BookService bookService;
+    private BookService bookService;
+
+    public JuneBookstoreApplication(
+            @Autowired BookService bookService
+    ) {
+        this.bookService = bookService;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(JuneBookstoreApplication.class, args);
