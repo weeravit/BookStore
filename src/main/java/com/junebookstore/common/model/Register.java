@@ -9,6 +9,14 @@ public class Register {
 
     public Register() {}
 
+    public Register(String username, String password, String dateOfBirth, String name, String surname) {
+        this.username = username;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+        this.name = name;
+        this.surname = surname;
+    }
+
     public String getUsername() {
         return username;
     }
