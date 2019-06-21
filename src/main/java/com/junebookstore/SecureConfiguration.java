@@ -39,7 +39,7 @@ public class SecureConfiguration extends WebSecurityConfigurerAdapter {
                 .exceptionHandling()
                 .authenticationEntryPoint(new UnauthenticationEntryPoint())
                 .and()
-                .addFilterBefore(getBeforeFilter(), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(CustomUsernamePasswordAuthenticationFilter.getFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/books").permitAll()
@@ -59,18 +59,6 @@ public class SecureConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .headers().frameOptions().sameOrigin();
     }
-
-    @Bean
-    public CustomUsernamePasswordAuthenticationFilter getBeforeFilter() throws Exception {
-        CustomUsernamePasswordAuthenticationFilter filter = new CustomUsernamePasswordAuthenticationFilter();
-        filter.setAuthenticationManager(authenticationManager());
-        filter.setAuthenticationSuccessHandler(successHandler);
-        filter.setAuthenticationFailureHandler(failureHandler);
-        return filter;
-    }
-
-    AuthenticationSuccessHandler successHandler = (httpServletRequest, httpServletResponse, authentication) -> httpServletResponse.setStatus(HttpServletResponse.SC_OK);
-    AuthenticationFailureHandler failureHandler = (httpServletRequest, httpServletResponse, authentication) -> httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "username or password is not exist");
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
