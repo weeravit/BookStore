@@ -3,7 +3,7 @@ package com.junebookstore.service;
 import com.junebookstore.entity.BookEntity;
 import com.junebookstore.gateway.BookStoreGateway;
 import com.junebookstore.repository.BookRepository;
-import com.junebookstore.transform.BookTransform;
+import com.junebookstore.common.transform.BookTransform;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;

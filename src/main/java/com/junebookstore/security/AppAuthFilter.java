@@ -1,6 +1,6 @@
 package com.junebookstore.security;
 
-import com.junebookstore.helper.JsonWrapper;
+import com.junebookstore.common.wrapper.JsonWrapper;
 import com.junebookstore.model.Login;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;

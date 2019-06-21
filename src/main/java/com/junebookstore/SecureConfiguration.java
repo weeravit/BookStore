@@ -1,6 +1,6 @@
 package com.junebookstore;
 
-import com.junebookstore.helper.PasswordWrapper;
+import com.junebookstore.common.wrapper.PasswordWrapper;
 import com.junebookstore.security.AppAuthProvider;
 import com.junebookstore.security.AppAuthFilter;
 import com.junebookstore.security.UnauthEntryPoint;

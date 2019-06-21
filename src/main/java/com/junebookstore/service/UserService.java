@@ -1,7 +1,7 @@
 package com.junebookstore.service;
 
 import com.junebookstore.entity.UserEntity;
-import com.junebookstore.helper.PasswordWrapper;
+import com.junebookstore.common.wrapper.PasswordWrapper;
 import com.junebookstore.model.Register;
 import com.junebookstore.model.UserInformation;
 import com.junebookstore.model.UserPrincipal;

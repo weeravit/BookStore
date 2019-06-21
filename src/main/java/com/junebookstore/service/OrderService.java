@@ -3,7 +3,7 @@ package com.junebookstore.service;
 import com.junebookstore.entity.BookEntity;
 import com.junebookstore.entity.OrderEntity;
 import com.junebookstore.entity.UserEntity;
-import com.junebookstore.exception.BookNotFoundException;
+import com.junebookstore.common.exception.BookNotFoundException;
 import com.junebookstore.model.OrderBooks;
 import com.junebookstore.model.OrderPrice;
 import com.junebookstore.repository.BookRepository;
