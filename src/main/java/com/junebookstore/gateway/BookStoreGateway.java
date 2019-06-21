@@ -1,8 +1,9 @@
 package com.junebookstore.gateway;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.junebookstore.helper.JsonWrapper;
-import com.junebookstore.model.Book;
+import com.junebookstore.common.wrapper.JsonWrapper;
+import com.junebookstore.common.model.Book;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -10,18 +11,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component("BookStoreGateway")
+@Component
 public class BookStoreGateway {
-    private final String BASE_URL = "https://scb-test-book-publisher.herokuapp.com";
+    @Value("${external.books.url}")
+    private String booksUrl;
+
+    @Value("${external.books-recommend.url}")
+    private String booksRecommendUrl;
 
     private JsonWrapper jsonWrapper = new JsonWrapper();
     private RestTemplate restTemplate = new RestTemplate();
 
-    public BookStoreGateway() {}
+    public BookStoreGateway() { }
 
     public List<Book> getBooks() {
-        String url = String.format("%s/books", BASE_URL);
-        String json = restTemplate.getForObject(url, String.class);
+        String json = restTemplate.getForObject(booksUrl, String.class);
 
         try {
             return jsonWrapper.readValue(json, new TypeReference<List<Book>>() {
@@ -33,8 +37,7 @@ public class BookStoreGateway {
     }
 
     public List<Book> getBooksRecommendation() {
-        String url = String.format("%s/books/recommendation", BASE_URL);
-        String json = restTemplate.getForObject(url, String.class);
+        String json = restTemplate.getForObject(booksRecommendUrl, String.class);
 
         try {
             return jsonWrapper.readValue(json, new TypeReference<List<Book>>() {

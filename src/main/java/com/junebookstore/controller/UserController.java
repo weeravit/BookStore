@@ -1,11 +1,11 @@
 package com.junebookstore.controller;
 
-import com.junebookstore.model.OrderBooks;
-import com.junebookstore.model.OrderPrice;
-import com.junebookstore.model.Register;
-import com.junebookstore.model.UserInformation;
-import com.junebookstore.service.OrderService;
-import com.junebookstore.service.UserService;
+import com.junebookstore.common.model.OrderBooks;
+import com.junebookstore.common.model.OrderPrice;
+import com.junebookstore.common.model.Register;
+import com.junebookstore.common.model.UserInformation;
+import com.junebookstore.business.service.OrderService;
+import com.junebookstore.business.service.UserService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +17,16 @@ import java.security.Principal;
 @Api("User")
 @RestController
 public class UserController {
-    @Autowired
-    UserService userService;
-    @Autowired
-    OrderService orderService;
+    private UserService userService;
+    private OrderService orderService;
+
+    public UserController(
+            @Autowired UserService userService,
+            @Autowired OrderService orderService
+    ) {
+        this.userService = userService;
+        this.orderService = orderService;
+    }
 
     @ApiOperation(value = "Create user account")
     @ApiResponses(value = {
