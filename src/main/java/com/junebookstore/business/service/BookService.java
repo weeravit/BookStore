@@ -24,15 +24,9 @@ public class BookService {
     }
 
     public List<BookEntity> getBooks() {
-        List<BookEntity> entities = repository.findAll(
+        return repository.findAll(
                 Sort.by(Sort.Direction.DESC, BookEntity.IS_RECOMMENDED_COL)
         );
-
-        if (!entities.isEmpty()) {
-            return entities;
-        }
-
-        return cacheBooks();
     }
 
     public List<BookEntity> cacheBooks() {
