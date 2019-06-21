@@ -1,7 +1,8 @@
 package com.junebookstore.controller;
 
 import com.junebookstore.common.exception.BookNotFoundException;
-import com.junebookstore.model.ErrorDetail;
+
+import com.junebookstore.common.model.ErrorDetail;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
