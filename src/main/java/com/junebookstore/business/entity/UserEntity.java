@@ -1,4 +1,4 @@
-package com.junebookstore.entity;
+package com.junebookstore.business.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

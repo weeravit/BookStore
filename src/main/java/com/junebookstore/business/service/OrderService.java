@@ -1,14 +1,14 @@
-package com.junebookstore.service;
+package com.junebookstore.business.service;
 
-import com.junebookstore.entity.BookEntity;
-import com.junebookstore.entity.OrderEntity;
-import com.junebookstore.entity.UserEntity;
+import com.junebookstore.business.entity.BookEntity;
+import com.junebookstore.business.entity.OrderEntity;
+import com.junebookstore.business.entity.UserEntity;
 import com.junebookstore.common.exception.BookNotFoundException;
 import com.junebookstore.model.OrderBooks;
 import com.junebookstore.model.OrderPrice;
-import com.junebookstore.repository.BookRepository;
-import com.junebookstore.repository.OrderRepository;
-import com.junebookstore.repository.UserRepository;
+import com.junebookstore.business.repository.BookRepository;
+import com.junebookstore.business.repository.OrderRepository;
+import com.junebookstore.business.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

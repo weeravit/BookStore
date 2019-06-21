@@ -1,6 +1,6 @@
 package com.junebookstore.common.transform;
 
-import com.junebookstore.entity.BookEntity;
+import com.junebookstore.business.entity.BookEntity;
 import com.junebookstore.model.Book;
 
 import java.util.List;

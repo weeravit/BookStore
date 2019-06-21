@@ -1,8 +1,8 @@
-package com.junebookstore.service;
+package com.junebookstore.business.service;
 
-import com.junebookstore.entity.BookEntity;
+import com.junebookstore.business.entity.BookEntity;
 import com.junebookstore.gateway.BookStoreGateway;
-import com.junebookstore.repository.BookRepository;
+import com.junebookstore.business.repository.BookRepository;
 import com.junebookstore.common.transform.BookTransform;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;

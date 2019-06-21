@@ -1,7 +1,7 @@
 package com.junebookstore.controller;
 
-import com.junebookstore.entity.BookEntity;
-import com.junebookstore.service.BookService;
+import com.junebookstore.business.entity.BookEntity;
+import com.junebookstore.business.service.BookService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -4,7 +4,7 @@ import com.junebookstore.common.wrapper.PasswordWrapper;
 import com.junebookstore.config.security.AppAuthProvider;
 import com.junebookstore.config.security.AppAuthFilter;
 import com.junebookstore.config.security.UnauthEntryPoint;
-import com.junebookstore.service.UserService;
+import com.junebookstore.business.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

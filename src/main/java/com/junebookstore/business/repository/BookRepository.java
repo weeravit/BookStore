@@ -1,6 +1,6 @@
-package com.junebookstore.repository;
+package com.junebookstore.business.repository;
 
-import com.junebookstore.entity.BookEntity;
+import com.junebookstore.business.entity.BookEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

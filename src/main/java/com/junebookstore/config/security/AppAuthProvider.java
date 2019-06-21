@@ -1,6 +1,6 @@
 package com.junebookstore.config.security;
 
-import com.junebookstore.service.UserService;
+import com.junebookstore.business.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.crypto.password.PasswordEncoder;

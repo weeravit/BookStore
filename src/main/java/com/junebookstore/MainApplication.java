@@ -1,6 +1,6 @@
 package com.junebookstore;
 
-import com.junebookstore.service.BookService;
+import com.junebookstore.business.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

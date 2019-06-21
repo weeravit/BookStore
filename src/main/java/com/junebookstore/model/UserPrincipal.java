@@ -1,6 +1,6 @@
 package com.junebookstore.model;
 
-import com.junebookstore.entity.UserEntity;
+import com.junebookstore.business.entity.UserEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
