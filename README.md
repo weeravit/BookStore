@@ -6,7 +6,7 @@ It's very challenging but I was very happy to study and create it.
 
 ## Getting started
 - Clone this repo
-- `./mvnw clean install && java -jar target/june-bookstore-0.0.1-SNAPSHOT.jar` to run application
+- `./mvnw clean install && java -jar target/june-bookstore-0.0.2-SNAPSHOT.jar` to run application
 - Let's go to journey my api on http://localhost:8080/swagger-ui.html
 <br/>
 
