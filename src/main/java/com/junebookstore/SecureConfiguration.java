@@ -1,7 +1,7 @@
 package com.junebookstore;
 
 import com.junebookstore.helper.PasswordWrapper;
-import com.junebookstore.security.AppAuthenProvider;
+import com.junebookstore.security.AppAuthProvider;
 import com.junebookstore.security.AppAuthFilter;
 import com.junebookstore.security.UnauthEntryPoint;
 import com.junebookstore.service.UserService;
@@ -25,7 +25,7 @@ public class SecureConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(
-                AppAuthenProvider.getProvider(
+                AppAuthProvider.getProvider(
                         userService,
                         passwordWrapper.getPasswordEncoder()
                 )
