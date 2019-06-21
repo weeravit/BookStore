@@ -1,12 +1,11 @@
 package com.junebookstore;
 
 import com.junebookstore.helper.PasswordWrapper;
+import com.junebookstore.security.AppAuthenProvider;
 import com.junebookstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -23,7 +22,12 @@ public class SecureConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) {
-        auth.authenticationProvider(authenticationProvider());
+        auth.authenticationProvider(
+                AppAuthenProvider.getProvider(
+                        userService,
+                        passwordWrapper.getPasswordEncoder()
+                )
+        );
     }
 
     @Override
@@ -54,13 +58,5 @@ public class SecureConfiguration extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .headers().frameOptions().sameOrigin();
-    }
-
-    @Bean
-    public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userService);
-        authProvider.setPasswordEncoder(passwordWrapper.getPasswordEncoder());
-        return authProvider;
     }
 }
