@@ -43,10 +43,15 @@ public class SecureConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .addFilterBefore(AppAuthFilter.getFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/h2-console/**").permitAll()
-                .antMatchers("/books").permitAll()
-                .antMatchers("/login").permitAll()
-                .antMatchers(HttpMethod.POST, "/users").permitAll()
+                .antMatchers(
+                        "/h2-console/**",
+                        "/books",
+                        "/login"
+                ).permitAll()
+                .antMatchers(
+                        HttpMethod.POST,
+                        "/users"
+                ).permitAll()
                 .antMatchers(
                         "/v2/api-docs",
                         "/swagger-resources",
@@ -59,6 +64,8 @@ public class SecureConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .headers().frameOptions().sameOrigin();
+                .headers()
+                .frameOptions()
+                .sameOrigin();
     }
 }
