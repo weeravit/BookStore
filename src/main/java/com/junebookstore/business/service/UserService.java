@@ -2,9 +2,9 @@ package com.junebookstore.business.service;
 
 import com.junebookstore.business.entity.UserEntity;
 import com.junebookstore.common.wrapper.PasswordWrapper;
-import com.junebookstore.model.Register;
-import com.junebookstore.model.UserInformation;
-import com.junebookstore.model.UserPrincipal;
+import com.junebookstore.common.model.Register;
+import com.junebookstore.common.model.UserInformation;
+import com.junebookstore.common.model.UserPrincipal;
 import com.junebookstore.business.repository.OrderRepository;
 import com.junebookstore.business.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

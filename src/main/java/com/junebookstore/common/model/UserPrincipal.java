@@ -1,4 +1,4 @@
-package com.junebookstore.model;
+package com.junebookstore.common.model;
 
 import com.junebookstore.business.entity.UserEntity;
 import org.springframework.security.core.GrantedAuthority;

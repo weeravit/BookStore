@@ -1,9 +1,9 @@
 package com.junebookstore.controller;
 
-import com.junebookstore.model.OrderBooks;
-import com.junebookstore.model.OrderPrice;
-import com.junebookstore.model.Register;
-import com.junebookstore.model.UserInformation;
+import com.junebookstore.common.model.OrderBooks;
+import com.junebookstore.common.model.OrderPrice;
+import com.junebookstore.common.model.Register;
+import com.junebookstore.common.model.UserInformation;
 import com.junebookstore.business.service.OrderService;
 import com.junebookstore.business.service.UserService;
 import io.swagger.annotations.*;

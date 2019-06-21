@@ -1,4 +1,4 @@
-package com.junebookstore.model;
+package com.junebookstore.common.model;
 
 public class Register {
     private String username;

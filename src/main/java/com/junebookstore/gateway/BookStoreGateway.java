@@ -2,7 +2,7 @@ package com.junebookstore.gateway;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.junebookstore.common.wrapper.JsonWrapper;
-import com.junebookstore.model.Book;
+import com.junebookstore.common.model.Book;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;

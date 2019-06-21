@@ -1,7 +1,7 @@
 package com.junebookstore.config.security;
 
 import com.junebookstore.common.wrapper.JsonWrapper;
-import com.junebookstore.model.Login;
+import com.junebookstore.common.model.Login;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
