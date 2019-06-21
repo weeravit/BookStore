@@ -11,6 +11,7 @@ import com.junebookstore.repository.OrderRepository;
 import com.junebookstore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +25,7 @@ public class OrderService {
     @Autowired
     BookRepository bookRepository;
 
+    @Transactional
     public OrderPrice orderBooks(String username, OrderBooks orderBooks) {
         UserEntity userEntity = userRepository.findByUsername(username);
 
