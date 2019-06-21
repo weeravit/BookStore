@@ -45,13 +45,15 @@ public class SecureConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/books").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers(HttpMethod.POST, "/users").permitAll()
-                .antMatchers("/v2/api-docs",
-                        "/configuration/ui",
+                .antMatchers(
+                        "/v2/api-docs",
                         "/swagger-resources",
+                        "/swagger-resources/**",
+                        "/configuration/ui",
                         "/configuration/security",
                         "/swagger-ui.html",
-                        "/api/swagger-ui.html",
-                        "/webjars/**").permitAll()
+                        "/webjars/**"
+                ).permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
