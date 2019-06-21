@@ -16,12 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class AppAuthenFilter extends UsernamePasswordAuthenticationFilter {
+public class AppAuthFilter extends UsernamePasswordAuthenticationFilter {
     private JsonWrapper jsonWrapper = new JsonWrapper();
 
     @Bean
-    public static AppAuthenFilter getFilter(AuthenticationManager authenticationManager) {
-        AppAuthenFilter authenFilter = new AppAuthenFilter();
+    public static AppAuthFilter getFilter(AuthenticationManager authenticationManager) {
+        AppAuthFilter authenFilter = new AppAuthFilter();
         authenFilter.setAuthenticationManager(authenticationManager);
         authenFilter.setAuthenticationSuccessHandler(authenFilter.successHandler);
         authenFilter.setAuthenticationFailureHandler(authenFilter.failureHandler);
