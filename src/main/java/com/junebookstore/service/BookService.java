@@ -12,10 +12,16 @@ import java.util.List;
 
 @Service
 public class BookService {
-    @Autowired
-    BookRepository repository;
-    @Autowired
-    BookStoreGateway bookStoreGateway;
+    private BookRepository repository;
+    private BookStoreGateway bookStoreGateway;
+
+    public BookService(
+            @Autowired BookRepository repository,
+            @Autowired BookStoreGateway bookStoreGateway
+    ) {
+        this.repository = repository;
+        this.bookStoreGateway = bookStoreGateway;
+    }
 
     public List<BookEntity> getBooks() {
         List<BookEntity> entities = repository.findAll(
@@ -26,6 +32,10 @@ public class BookService {
             return entities;
         }
 
+        return cacheBooks();
+    }
+
+    public List<BookEntity> cacheBooks() {
         List<BookEntity> booksList = BookTransform.toEntity(
                 bookStoreGateway.getBooks(),
                 false

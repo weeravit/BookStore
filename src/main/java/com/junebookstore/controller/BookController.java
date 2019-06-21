@@ -14,8 +14,13 @@ import java.util.List;
 @Api("Books")
 @RestController
 public class BookController {
-    @Autowired
-    BookService service;
+    private BookService service;
+
+    public BookController(
+            @Autowired BookService service
+    ) {
+        this.service = service;
+    }
 
     @ApiOperation(value = "List of books", response = BookEntity.class, responseContainer = "List")
     @GetMapping("/books")
