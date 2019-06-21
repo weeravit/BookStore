@@ -1,4 +1,4 @@
-package com.junebookstore;
+package com.junebookstore.security;
 
 import com.junebookstore.helper.JsonWrapper;
 import com.junebookstore.model.Login;
@@ -16,12 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class AppAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+public class AppAuthenFilter extends UsernamePasswordAuthenticationFilter {
     private JsonWrapper jsonWrapper = new JsonWrapper();
 
     @Bean
-    public static AppAuthenticationFilter getFilter(AuthenticationManager authenticationManager) {
-        AppAuthenticationFilter authenFilter = new AppAuthenticationFilter();
+    public static AppAuthenFilter getFilter(AuthenticationManager authenticationManager) {
+        AppAuthenFilter authenFilter = new AppAuthenFilter();
         authenFilter.setAuthenticationManager(authenticationManager);
         authenFilter.setAuthenticationSuccessHandler(authenFilter.successHandler);
         authenFilter.setAuthenticationFailureHandler(authenFilter.failureHandler);

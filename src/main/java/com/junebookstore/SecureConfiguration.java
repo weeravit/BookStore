@@ -2,6 +2,7 @@ package com.junebookstore;
 
 import com.junebookstore.helper.PasswordWrapper;
 import com.junebookstore.security.AppAuthenProvider;
+import com.junebookstore.security.AppAuthenFilter;
 import com.junebookstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -39,7 +40,7 @@ public class SecureConfiguration extends WebSecurityConfigurerAdapter {
                 .exceptionHandling()
                 .authenticationEntryPoint(new UnauthenticationEntryPoint())
                 .and()
-                .addFilterBefore(AppAuthenticationFilter.getFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(AppAuthenFilter.getFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/books").permitAll()
