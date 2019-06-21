@@ -1,9 +1,9 @@
 package com.junebookstore.business.service;
 
 import com.junebookstore.business.entity.BookEntity;
-import com.junebookstore.gateway.BookStoreGateway;
 import com.junebookstore.business.repository.BookRepository;
 import com.junebookstore.common.transform.BookTransform;
+import com.junebookstore.gateway.BookStoreGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -29,7 +29,7 @@ public class BookService {
         );
     }
 
-    public List<BookEntity> cacheBooks() {
+    public void cacheBooks() {
         List<BookEntity> booksList = BookTransform.toEntity(
                 bookStoreGateway.getBooks(),
                 false
@@ -43,7 +43,5 @@ public class BookService {
         repository.deleteAll();
         repository.saveAll(booksList);
         repository.saveAll(booksRecommendationList);
-
-        return repository.findAll(Sort.by(Sort.Direction.DESC, BookEntity.IS_RECOMMENDED_COL));
     }
 }
