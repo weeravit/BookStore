@@ -1,9 +1,9 @@
-package com.junebookstore;
+package com.junebookstore.config;
 
 import com.junebookstore.common.wrapper.PasswordWrapper;
-import com.junebookstore.security.AppAuthProvider;
-import com.junebookstore.security.AppAuthFilter;
-import com.junebookstore.security.UnauthEntryPoint;
+import com.junebookstore.config.security.AppAuthProvider;
+import com.junebookstore.config.security.AppAuthFilter;
+import com.junebookstore.config.security.UnauthEntryPoint;
 import com.junebookstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

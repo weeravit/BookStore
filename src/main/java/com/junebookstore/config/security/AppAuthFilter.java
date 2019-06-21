@@ -1,4 +1,4 @@
-package com.junebookstore.security;
+package com.junebookstore.config.security;
 
 import com.junebookstore.common.wrapper.JsonWrapper;
 import com.junebookstore.model.Login;

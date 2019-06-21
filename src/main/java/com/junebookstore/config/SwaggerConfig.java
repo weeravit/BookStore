@@ -1,4 +1,4 @@
-package com.junebookstore;
+package com.junebookstore.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,7 +27,11 @@ public class SwaggerConfig {
     private ApiInfo apiEndPointsInfo() {
         return new ApiInfoBuilder()
                 .title("BookStore REST API")
-                .contact(new Contact("Weeravit Sirita", "", "weeravit.sirita@gmail.com"))
+                .contact(new Contact(
+                        "Weeravit Sirita",
+                        "",
+                        "weeravit.sirita@gmail.com"
+                ))
                 .version("1.0.0")
                 .build();
     }
