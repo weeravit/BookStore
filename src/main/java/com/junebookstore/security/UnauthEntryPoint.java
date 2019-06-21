@@ -1,4 +1,4 @@
-package com.junebookstore;
+package com.junebookstore.security;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
-public final class UnauthenticationEntryPoint
+public final class UnauthEntryPoint
   implements AuthenticationEntryPoint {
  
     @Override
