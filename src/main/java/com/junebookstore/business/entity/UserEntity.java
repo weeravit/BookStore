@@ -34,6 +34,15 @@ public class UserEntity {
         this.surname = surname;
     }
 
+    public UserEntity(int id, String username, String password, String dateOfBirth, String name, String surname) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+        this.name = name;
+        this.surname = surname;
+    }
+
     public int getId() {
         return id;
     }
