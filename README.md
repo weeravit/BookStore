@@ -20,5 +20,5 @@ Note: This project use h2-database embedded.
 
 ## Other
 - [db.sql](https://github.com/weeravit/BookStore/blob/master/src/main/resources/db.sql) - For view database design
+- [H2 Console](http://localhost:8080/h2-console) - For view database
 - [Swagger UI](http://localhost:8080/swagger-ui.html) - For view api document
-
