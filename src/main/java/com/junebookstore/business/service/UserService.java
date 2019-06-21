@@ -1,6 +1,7 @@
 package com.junebookstore.business.service;
 
 import com.junebookstore.business.entity.UserEntity;
+import com.junebookstore.common.exception.UsernameIsAlreadyExistException;
 import com.junebookstore.common.wrapper.PasswordWrapper;
 import com.junebookstore.common.model.Register;
 import com.junebookstore.common.model.UserInformation;
@@ -33,6 +34,12 @@ public class UserService implements UserDetailsService {
     }
 
     public int register(Register data) {
+        UserEntity user = userRepository.findByUsername(data.getUsername());
+
+        if (user != null) {
+            throw new UsernameIsAlreadyExistException(data.getUsername());
+        }
+
         UserEntity entity = new UserEntity(
                 data.getUsername(),
                 passwordWrapper.encodePassword(data.getPassword()),
