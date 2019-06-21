@@ -17,10 +17,16 @@ import java.security.Principal;
 @Api("User")
 @RestController
 public class UserController {
-    @Autowired
-    UserService userService;
-    @Autowired
-    OrderService orderService;
+    private UserService userService;
+    private OrderService orderService;
+
+    public UserController(
+            @Autowired UserService userService,
+            @Autowired OrderService orderService
+    ) {
+        this.userService = userService;
+        this.orderService = orderService;
+    }
 
     @ApiOperation(value = "Create user account")
     @ApiResponses(value = {
