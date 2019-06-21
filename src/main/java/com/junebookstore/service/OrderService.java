@@ -3,6 +3,7 @@ package com.junebookstore.service;
 import com.junebookstore.entity.BookEntity;
 import com.junebookstore.entity.OrderEntity;
 import com.junebookstore.entity.UserEntity;
+import com.junebookstore.exception.BookNotFoundException;
 import com.junebookstore.model.OrderBooks;
 import com.junebookstore.model.OrderPrice;
 import com.junebookstore.repository.BookRepository;
@@ -33,7 +34,7 @@ public class OrderService {
                     Optional<BookEntity> bookEntity = bookRepository.findById(bookId);
 
                     if (!bookEntity.isPresent()) {
-                        return 0;
+                        throw new BookNotFoundException(String.valueOf(bookId));
                     }
 
                     OrderEntity orderEntity = new OrderEntity(userEntity, bookEntity.get());
