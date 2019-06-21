@@ -12,7 +12,7 @@ import springfox.documentation.annotations.ApiIgnore;
 import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
 
-@Api("User")
+@Api(tags = {"Users"})
 @RestController
 public class UserController {
     private UserService userService;

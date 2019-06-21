@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Api("Books")
+@Api(tags = {"Books"})
 @RestController
 public class BookController {
     private BookService service;
